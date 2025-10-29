@@ -32,3 +32,54 @@ function Button(){
       </div> 
     );
 }
+
+
+
+
+
+// Adding useState in useContext 
+
+import {createContext,useContext,useState} from "react";
+
+
+const ThemeContext=createContext();
+const UserContext=createContext();
+
+export default function App(){
+  const[task,setTask]=useState("krishna");
+  const[user,setUser]=useState("krishnajiji");
+  
+  return(
+    
+    <UserContext.Provider value={{task,setTask}}>
+    <ThemeContext.Provider value={{user,setUser}}> 
+      <Toolbar/>
+    </ThemeContext.Provider>
+    </UserContext.Provider>
+    );
+}
+
+function Toolbar(){
+  return <Nav/>
+}
+
+function Nav(){
+  return <Button/>
+}
+
+function Button(){
+  const {task,setTask}=useContext(UserContext);
+  const {user,setUser}=useContext(ThemeContext);
+  
+  return(
+    <h1>{task} will be great</h1>
+    
+
+    <button onClick={()=>setTask(task=="krishna"?"darm mode":"light mode"}}>click</button>
+    
+    
+    );
+}
+
+
+
