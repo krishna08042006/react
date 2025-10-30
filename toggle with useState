@@ -1,0 +1,17 @@
+// toggle or not toggle programming with useState
+
+import {useState} from 'react';
+
+export default function App(){
+  
+  const[show,setShow]=useState(false);
+  
+  return(
+    <>
+      <h1>Toggle or Not Toggle Message</h1>
+      <button onClick={()=>setShow(!show)}>click</button>
+      
+      {show && <p>Its toggle</p>}
+    </>
+    );
+}
